@@ -72,10 +72,34 @@ function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
       }
     };
 
+    // Handle tab visibility change to keep video on last frame
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible" && logoVideoRef.current) {
+        const video = logoVideoRef.current;
+        // If video is not ended, seek to end and pause
+        if (video.readyState >= 2) {
+          if (!video.ended) {
+            video.currentTime = video.duration;
+            video.pause();
+          }
+        } else {
+          // If video not loaded yet, wait for it to load
+          const onLoaded = () => {
+            video.currentTime = video.duration;
+            video.pause();
+            video.removeEventListener("loadeddata", onLoaded);
+          };
+          video.addEventListener("loadeddata", onLoaded);
+        }
+      }
+    };
+
     window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       tl.kill();
     };
   }, [onAnimationComplete]);
