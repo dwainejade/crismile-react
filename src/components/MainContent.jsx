@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 import EmailForm from "./EmailForm";
 import CloudCanvas from "./CloudCanvas";
 
@@ -74,6 +75,20 @@ function MainContent({ isVisible }) {
             </h2>
 
             <EmailForm />
+          </div>
+
+          <div style={{ marginTop: 32, textAlign: "center" }}>
+            <Link
+              to="/blog"
+              style={{
+                fontSize: "1.2rem",
+                color: "#1e90ff",
+                textDecoration: "underline",
+                fontWeight: 600,
+              }}
+            >
+              Read our Blog
+            </Link>
           </div>
         </div>
       </div>
