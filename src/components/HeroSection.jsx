@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
+function HeroSection({
+  onAnimationComplete,
+  onAssetsLoaded,
+  animationComplete,
+}) {
   const logoVideoRef = useRef(null);
   const heroSectionRef = useRef(null);
   const heroContentRef = useRef(null);
@@ -10,12 +14,23 @@ function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
   const isMobile = () => window.innerWidth <= 768;
 
   useEffect(() => {
-    // Initial setup
-    document.body.classList.add("lock-scroll");
-
     const logoVideo = logoVideoRef.current;
     const heroSection = heroSectionRef.current;
     const heroContent = heroContentRef.current;
+
+    if (animationComplete) {
+      // Instantly set to final state, skip animation
+      document.body.classList.remove("lock-scroll");
+      gsap.set(logoVideo, { opacity: 1, scale: 0.8 });
+      gsap.set(heroContent, { top: 0 });
+      gsap.set(heroSection, {
+        height: window.innerWidth <= 768 ? "20vh" : "40vh",
+      });
+      return;
+    }
+
+    // Initial setup
+    document.body.classList.add("lock-scroll");
 
     // Set initial states
     gsap.set(logoVideo, { opacity: 1, scale: 1 });
@@ -101,7 +116,7 @@ function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       tl.kill();
     };
-  }, [onAnimationComplete]);
+  }, [animationComplete, onAnimationComplete]);
 
   return (
     <section className="hero-section" ref={heroSectionRef}>

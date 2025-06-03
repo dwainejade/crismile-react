@@ -68,13 +68,19 @@ function AnimatedRoutes({ animationComplete, setAssetsLoaded }) {
 
 function App() {
   const [assetsLoaded, setAssetsLoaded] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(() => {
+    // Check sessionStorage for animation state
+    return sessionStorage.getItem("animationComplete") === "true";
+  });
 
   useEffect(() => {
-    if (!assetsLoaded) return;
-    const timer = setTimeout(() => setAnimationComplete(true), 3000);
+    if (!assetsLoaded || animationComplete) return;
+    const timer = setTimeout(() => {
+      setAnimationComplete(true);
+      sessionStorage.setItem("animationComplete", "true");
+    }, 3000);
     return () => clearTimeout(timer);
-  }, [assetsLoaded]);
+  }, [assetsLoaded, animationComplete]);
 
   return (
     <Router>
