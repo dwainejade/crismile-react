@@ -1,13 +1,19 @@
 @font-face {
   font-family: "Dongle";
+  src: url("./assets/fonts/Dongle/Dongle-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Dongle";
   src: url("./assets/fonts/Dongle/Dongle-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Dongle";
-  src: url("./assets/fonts/Dongle/Dongle-Light.woff2") format("woff2");
-  font-weight: 300;
+  src: url("./assets/fonts/Dongle/Dongle-Bold.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
 }
 

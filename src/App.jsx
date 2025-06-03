@@ -9,7 +9,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import HeroSection from "./components/HeroSection";
 import MainContent from "./components/MainContent";
-import Blog from "./components/Blog";
+import BlogList from "./components/BlogList";
+import BlogPost from "./components/BlogPost";
 import "./App.css";
 
 function AnimatedRoutes({ animationComplete, setAssetsLoaded }) {
@@ -38,12 +39,25 @@ function AnimatedRoutes({ animationComplete, setAssetsLoaded }) {
           path="/blog"
           element={
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              <Blog />
+              <BlogList />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/blog/:id"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              <BlogPost />
             </motion.div>
           }
         />
@@ -63,12 +77,14 @@ function App() {
   }, [assetsLoaded]);
 
   return (
-    <div className="App">
-      <AnimatedRoutes
-        animationComplete={animationComplete}
-        setAssetsLoaded={setAssetsLoaded}
-      />
-    </div>
+    <Router>
+      <div className="App">
+        <AnimatedRoutes
+          animationComplete={animationComplete}
+          setAssetsLoaded={setAssetsLoaded}
+        />
+      </div>
+    </Router>
   );
 }
 
