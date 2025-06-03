@@ -4,12 +4,13 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import HeroSection from "./components/HeroSection";
 import MainContent from "./components/MainContent";
 import Blog from "./components/Blog";
 import "./App.css";
-import { useState, useEffect } from "react";
 
 function AnimatedRoutes({ animationComplete, setAssetsLoaded }) {
   const location = useLocation();

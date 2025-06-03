@@ -77,7 +77,7 @@ function MainContent({ isVisible }) {
             <EmailForm />
           </div>
 
-          <div style={{ marginTop: 32, textAlign: "center" }}>
+          {/* <div style={{ marginTop: 32, textAlign: "center" }}>
             <Link
               to="/blog"
               style={{
@@ -89,7 +89,7 @@ function MainContent({ isVisible }) {
             >
               Read our Blog
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
