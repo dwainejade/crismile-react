@@ -106,7 +106,7 @@ function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
   return (
     <section className="hero-section" ref={heroSectionRef}>
       {/* Navigation Bar */}
-      <nav
+      {/* <nav
         style={{
           width: "100%",
           position: "absolute",
@@ -142,7 +142,7 @@ function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
         >
           Blog
         </a>
-      </nav>
+      </nav> */}
       <div className="hero-content" ref={heroContentRef}>
         <div className="logo-container">
           <video
