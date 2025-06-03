@@ -24,7 +24,6 @@ function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
     const tl = gsap.timeline({
       onComplete: () => {
         document.body.classList.remove("lock-scroll");
-        onAnimationComplete();
       },
     });
 
@@ -106,6 +105,44 @@ function HeroSection({ onAnimationComplete, onAssetsLoaded }) {
 
   return (
     <section className="hero-section" ref={heroSectionRef}>
+      {/* Navigation Bar */}
+      <nav
+        style={{
+          width: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          display: "flex",
+          justifyContent: "flex-end",
+          padding: "1.2rem 2rem",
+          zIndex: 10,
+        }}
+      >
+        <a
+          href="/blog"
+          style={{
+            color: "#1e90ff",
+            fontFamily: "NicoMoji, sans-serif",
+            fontWeight: 700,
+            fontSize: "1.4rem",
+            textDecoration: "none",
+            background: "#fff",
+            borderRadius: "20px",
+            padding: "0.4rem 1.2rem",
+            boxShadow: "0 2px 8px rgba(30,144,255,0.08)",
+            transition: "background 0.2s",
+          }}
+          target="_self"
+          rel="noopener noreferrer"
+          as={undefined}
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.pathname = "/blog";
+          }}
+        >
+          Blog
+        </a>
+      </nav>
       <div className="hero-content" ref={heroContentRef}>
         <div className="logo-container">
           <video

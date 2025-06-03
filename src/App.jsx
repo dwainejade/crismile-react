@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeroSection from "./components/HeroSection";
 import MainContent from "./components/MainContent";
+import Blog from "./components/Blog";
 import "./App.css";
 
 function App() {
@@ -15,8 +17,21 @@ function App() {
 
   return (
     <div className="App">
-      <HeroSection onAssetsLoaded={() => setAssetsLoaded(true)} />
-      <MainContent isVisible={animationComplete} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <HeroSection
+                onAssetsLoaded={() => setAssetsLoaded(true)}
+                animationComplete={animationComplete}
+              />
+              <MainContent isVisible={animationComplete} />
+            </>
+          }
+        />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
     </div>
   );
 }
