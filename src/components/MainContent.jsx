@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 import EmailForm from "./EmailForm";
 import CloudCanvas from "./CloudCanvas";
+import Socials from "./Socials";
 
 function MainContent({ isVisible }) {
   const mainContentRef = useRef(null);
@@ -92,6 +93,9 @@ function MainContent({ isVisible }) {
           </div> */}
         </div>
       </div>
+      {/* Socials Section */}
+      <Socials />
+      {/* End Socials Section */}
     </section>
   );
 }
