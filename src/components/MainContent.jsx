@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import EmailForm from "./EmailForm";
 import CloudCanvas from "./CloudCanvas";
 import Socials from "./Socials";
@@ -93,9 +93,8 @@ function MainContent({ isVisible }) {
           </div> */}
         </div>
       </div>
-      {/* Socials Section */}
+
       <Socials />
-      {/* End Socials Section */}
     </section>
   );
 }

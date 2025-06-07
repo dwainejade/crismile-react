@@ -6,6 +6,8 @@ import twitterIcon from "../assets/icons/twitter.svg";
 import blueskyIcon from "../assets/icons/bluesky.svg";
 import tiktokIcon from "../assets/icons/tiktok.svg";
 import instagramIcon from "../assets/icons/instagram.svg";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const socials = [
   {
@@ -53,8 +55,24 @@ const socials = [
 ];
 
 function Socials() {
+  const socialsRef = useRef(null);
+
+  useEffect(() => {
+    const links = socialsRef.current?.querySelectorAll(".socials-link");
+    if (links && links.length > 0) {
+      gsap.set(links, { opacity: 0, y: 40 });
+      gsap.to(links, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "power4.out",
+        delay: 1.1,
+      });
+    }
+  }, []);
+
   return (
-    <div className="socials-section">
+    <div className="socials-section" ref={socialsRef}>
       {socials.map(({ href, icon, label, aria }) => (
         <a
           key={label}
