@@ -23,7 +23,7 @@ const socials = [
     aria: "Facebook",
   },
   {
-    href: "https://www.youtube.com/@CriSmileGame",
+    href: "https://www.youtube.com/@CriSmileGames",
     icon: youtubeIcon,
     label: "YouTube",
     aria: "YouTube",
